@@ -4,25 +4,22 @@ import { RegistrarInfo } from "../model/registrarInfo";
 import { WhoIsResponse } from "../model/whoisResponse";
 
 export class WhoIsApiService {
-    private webApi: string = "";
+    private webApi: string = "http://localhost:7000/whois/mock";
 
     async getWhoIsResponse(): Promise<WhoIsResponse> {
         //todo: delete mock response
 
         // for testing without the api
-        return MockIpWhoResponse.getMockResponse();
+        // let responseData = MockIpWhoResponse.getMockResponse();
+        // console.log(JSON.stringify(responseData));
+        // return responseData;
         
         const headers = { 'Content-Type': 'application/json' }
 
-        let response = await fetch(this.webApi);
+        let response = await fetch(this.webApi, { headers: headers });
 
-        const data = await response.json();
+        const data:WhoIsResponse = await response.json();
 
-        return this.convertResponse(data);
-    }
-
-    convertResponse(json: string): WhoIsResponse {
-        //todo: write mapping class
-        return new WhoIsResponse();
+        return data;
     }
 }
