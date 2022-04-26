@@ -1,7 +1,7 @@
 export class Contact {
-	Organization: string = '';
-	State: string = '';
-	Country: string = '';
-	CountryCode: string = '';
-	RawText: string = '';
+	organization: string = '';
+	state: string = '';
+	country: string = '';
+	countryCode: string = '';
+	rawText: string = '';
 }

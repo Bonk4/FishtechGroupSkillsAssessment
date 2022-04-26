@@ -1,5 +1,5 @@
 export class NameServers {
-	RawText: string = '';
+	rawText: string = '';
 	hostNames: (string)[] = [];
-	Ips: (string)[] = [];
+	ips: (string)[] = [];
 }

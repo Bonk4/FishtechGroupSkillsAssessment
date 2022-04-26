@@ -4,27 +4,27 @@ import { NameServers } from "./nameServers";
 import { RegistryData } from "./registry";
 
 export class WhoIsRecord {
-	CreatedDate: string = '';
-	UpdatedDate: string = '';
-	ExpiresDate: string = '';
+	createdDate: string = '';
+	updatedDate: string = '';
+	expiresDate: string = '';
 
-	DomainName: string = '';
-	Status: string = '';
-	RawText: string = '';
-	ParseCode: string = '';
-	Header: string = '';
-	StrippedText: string = '';
-	Footer: string = '';
-	RegistrarName: string = '';
-	RegistrarIanaId: string = '';
-	Contactemail: string = '';
-	DomainNameExt: string = '';
-	EstimatedDomainAge: number = 0;
+	domainName: string = '';
+	status: string = '';
+	rawText: string = '';
+	parseCode: string = '';
+	header: string = '';
+	strippedText: string = '';
+	footer: string = '';
+	registrarName: string = '';
+	registrarIanaId: string = '';
+	contactemail: string = '';
+	domainNameExt: string = '';
+	estimatedDomainAge: number = 0;
 
-	Registrant: Contact = new Contact();
-	AdministrativeContact: Contact = new Contact();
-	TechnicalContact: Contact = new Contact();
-	NameServers: NameServers = new NameServers();
-	Audit: Audit = new Audit();
-	RegistryData: RegistryData = new RegistryData();
+	registrant: Contact = new Contact();
+	administrativeContact: Contact = new Contact();
+	technicalContact: Contact = new Contact();
+	nameServers: NameServers = new NameServers();
+	audit: Audit = new Audit();
+	registryData: RegistryData = new RegistryData();
 }

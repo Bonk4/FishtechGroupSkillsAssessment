@@ -1,5 +1,5 @@
 import { WhoIsRecord } from "./whoIsRecord";
 
 export class WhoIsApiResponse {
-	WhoIsRecord: WhoIsRecord = new WhoIsRecord();
+	WhoisRecord: WhoIsRecord = new WhoIsRecord();
 }

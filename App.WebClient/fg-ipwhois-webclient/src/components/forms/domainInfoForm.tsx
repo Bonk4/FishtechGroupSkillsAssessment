@@ -1,12 +1,12 @@
 import React from "react";
-import { DomainInfo } from "../../model/domain";
+import { WhoIsRecord } from "../../model/whoIsApiResponse/whoIsRecord";
 
 type Props = {
-    domainInfo: DomainInfo | undefined;
+    WhoisRecord: WhoIsRecord | undefined;
 };
 
 export class DomainInfoForm extends React.Component<Props> {
-    buildNameServersList(input: (string)[] | undefined): string {
+    buildListString(input: (string)[] | undefined): string {
         if (input === undefined)
             return '';
 
@@ -14,55 +14,65 @@ export class DomainInfoForm extends React.Component<Props> {
 
         return response;
     }
+    
+    buildAgeString(input: number | undefined) {
+        if(input !== undefined)
+            return input;
+        
+        return "";
+    }
+
+    buildDateString(input: string | undefined): string {
+        if(input !== undefined)
+            return new Date(input).toLocaleDateString();
+
+        return '';
+    }
 
     render() {
         return (
             <div className="form-group">
                 <div className="form-floating mb-3">
-                    <input type="email" className="form-control" id="domainName" value={this.props.domainInfo?.Name} readOnly={true} />
+                    <input type="text" className="form-control" id="domainName" value={this.props.WhoisRecord?.domainName} readOnly={true} />
                     <label htmlFor="domainName">Name</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input type="email" className="form-control" id="domainName" value={this.props.domainInfo?.Id} readOnly={true} />
-                    <label htmlFor="domainName">Id</label>
+                    <input type="text" className="form-control" id="domainNameExt" value={this.props.WhoisRecord?.domainNameExt} readOnly={true} />
+                    <label htmlFor="domainNameExt">Name Ext</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input type="email" className="form-control" id="domainName" value={this.props.domainInfo?.Age + ' years'} readOnly={true} />
-                    <label htmlFor="domainName">Age</label>
+                    <input type="text" className="form-control" id="domainAge" value={this.buildAgeString(this.props.WhoisRecord?.estimatedDomainAge)} readOnly={true} />
+                    <label htmlFor="domainAge">Age</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input type="email" className="form-control" id="domainName" value={this.props.domainInfo?.Status} readOnly={true} />
-                    <label htmlFor="domainName">Status</label>
+                    <input type="text" className="form-control" id="domainStatus" value={this.props.WhoisRecord?.domainName} readOnly={true} />
+                    <label htmlFor="domainStatus">Status</label>
                 </div>
                 <div className="row">
                     <div className="col">
                         <div className="form-floating mb-3">
-                            <input type="email" className="form-control" id="domainName" value={this.props.domainInfo?.CreateDate} readOnly={true} />
-                            <label htmlFor="domainName">CreateDate</label>
+                            <input type="text" className="form-control" id="domainName" value={this.buildDateString(this.props.WhoisRecord?.createdDate)} readOnly={true} />
+                            <label htmlFor="domainCreated">Created Date</label>
                         </div>
                     </div>
                 
                     <div className="col">
                         <div className="form-floating mb-3">
-                            <input type="email" className="form-control" id="domainName" value={this.props.domainInfo?.UpdateDate} readOnly={true} />
-                            <label htmlFor="domainName">Update Date</label>
+                            <input type="text" className="form-control" id="domainName" value={this.buildDateString(this.props.WhoisRecord?.updatedDate)} readOnly={true} />
+                            <label htmlFor="domainUpdated">Updated Date</label>
                         </div>
                     </div>
                 
                     <div className="col">
                         <div className="form-floating mb-3">
-                            <input type="email" className="form-control" id="domainName" value={this.props.domainInfo?.ExpireDate} readOnly={true} />
-                            <label htmlFor="domainName">Expire Date</label>
+                            <input type="text" className="form-control" id="domainName" value={this.buildDateString(this.props.WhoisRecord?.expiresDate)} readOnly={true} />
+                            <label htmlFor="domainExpired">Expired Date</label>
                         </div>
                     </div>
                 </div>
                 <div className="form-floating mb-3">
-                    <input type="email" className="form-control" id="domainName" value={this.props.domainInfo?.WhoIsServer} readOnly={true} />
-                    <label htmlFor="domainName">WhoIs Server</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <input type="email" className="form-control" id="domainName" value={this.buildNameServersList(this.props.domainInfo?.NameServers)} readOnly={true} />
-                    <label htmlFor="domainName">Name Servers</label>
+                    <input type="text" className="form-control" id="whoisServer" value={this.props.WhoisRecord?.registryData.whoisServer} readOnly={true} />
+                    <label htmlFor="whoisServer">WhoIs Server</label>
                 </div>
             </div>
         );

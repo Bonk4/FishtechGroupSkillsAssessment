@@ -1,4 +1,4 @@
-import { DomainInfo } from "../model/domain";
+import { DomainInfo } from "../model/ip2WhoIsApiResponse/domain";
 
 export class MockDomainInfo {
     static getMockDomainInfo() {

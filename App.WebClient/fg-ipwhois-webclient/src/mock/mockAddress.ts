@@ -1,4 +1,4 @@
-import { Address } from "../model/address";
+import { Address } from "../model/ip2WhoIsApiResponse/address";
 
 export class MockAddress {
     static getMockAddress(): Address {

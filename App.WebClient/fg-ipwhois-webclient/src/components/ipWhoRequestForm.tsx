@@ -1,17 +1,18 @@
-import React, { FormEventHandler, MouseEventHandler } from "react";
+import React, { ChangeEventHandler, FormEventHandler, MouseEventHandler } from "react";
 import { WhoIsApiResponse } from "../model/whoIsApiResponse/whoIsApiResponse";
 import { WhoIsApiService } from "../service/whoIsService";
-import { IpWhoResponse } from "./ipWhoResponse";
+import { IpWhoResponseForm } from "./ipWhoResponseForm";
 
 export class IpWhoRequestForm extends React.Component {
     apiService: WhoIsApiService = new WhoIsApiService();
     response: WhoIsApiResponse | undefined = undefined;
+    searchTerm: string = '';
 
     submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        await this.apiService.getWhoIsResponse()
-            .then(x => this.handleResponse(x));
+        await this.apiService.getWhoIsResponse(this.searchTerm)
+            .then(response => this.handleResponse(response));
     }
 
     clearForm = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -24,6 +25,10 @@ export class IpWhoRequestForm extends React.Component {
         this.response = whoIsResponse;
 
         this.setState({ response: this.response });
+    }
+    
+    handleChange = (input: string) => {
+        this.searchTerm = input;
     }
 
     render() {
@@ -42,7 +47,10 @@ export class IpWhoRequestForm extends React.Component {
                         <div className="input-group mb-3 w-50">
                             <input type="text" className="form-control"
                                 placeholder="IP Address or Domain"
-                                aria-label="Recipient's username" aria-describedby="button-search" />
+                                aria-label="Recipient's username" aria-describedby="button-search" 
+
+                                
+                                onChange={event => this.handleChange(event.target.value)} />
 
                             <button className="btn btn-outline-primary" type="submit" id="button-serach">
                                 Search
@@ -55,7 +63,7 @@ export class IpWhoRequestForm extends React.Component {
                     </div>
                 </form>
 
-                <IpWhoResponse apiResponse={this.response} />
+                <IpWhoResponseForm apiResponse={this.response} />
             </div>
         );
     }

@@ -1,4 +1,4 @@
-import { RegistrarInfo } from "../model/registrarInfo";
+import { RegistrarInfo } from "../model/ip2WhoIsApiResponse/registrarInfo";
 
 export class MockRegistrarInfo {
     static getMockRegistrar(): RegistrarInfo {

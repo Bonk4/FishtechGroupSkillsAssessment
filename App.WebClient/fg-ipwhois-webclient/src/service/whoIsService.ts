@@ -1,23 +1,14 @@
-import { MockIpWhoResponse } from "../mock/mockIpWhoResponse";
-import { Address } from "../model/ip2WhoIsApiResponse/address";
 import { WhoIsApiResponse } from "../model/whoIsApiResponse/whoIsApiResponse";
 
 export class WhoIsApiService {
-    private webApi: string = "http://20.124.53.93:7000/whois/mock";
+    private webApi: string = "http://20.124.53.93:7000/whois/";
 
-    async getWhoIsResponse(): Promise<WhoIsApiResponse> {
-        //todo: delete mock response
-
-        // for testing without the api
-        // let responseData = MockIpWhoResponse.getMockResponse();
-        // console.log(JSON.stringify(responseData));
-        // return responseData;
-        
+    async getWhoIsResponse(searchTerm: string): Promise<WhoIsApiResponse> {
         const headers = { 'Content-Type': 'application/json' }
 
-        let response = await fetch(this.webApi, { headers: headers });
+        let response = await fetch(this.webApi + searchTerm, { headers: headers });
 
-        const data:WhoIsApiResponse = await response.json();
+        const data = await response.json() as WhoIsApiResponse;
 
         return data;
     }

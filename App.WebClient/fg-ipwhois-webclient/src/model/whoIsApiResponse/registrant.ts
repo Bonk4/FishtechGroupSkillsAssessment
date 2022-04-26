@@ -1,7 +1,7 @@
-export class RegistrantResponse {
-	Organization: string = '';
-	State: string = '';
-	Country: string = '';
-	CountryCode: string = '';
-	RawText: string = '';
+export class Registrant {
+	organization: string = '';
+	state: string = '';
+	country: string = '';
+	countryCode: string = '';
+	rawText: string = '';
 }
