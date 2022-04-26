@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FormEventHandler, MouseEventHandler } from "react";
+import React from "react";
 import { WhoIsApiResponse } from "../model/whoIsApiResponse/whoIsApiResponse";
 import { WhoIsApiService } from "../service/whoIsService";
 import { IpWhoResponseForm } from "./ipWhoResponseForm";
@@ -11,8 +11,9 @@ export class IpWhoRequestForm extends React.Component {
     submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        await this.apiService.getWhoIsResponse(this.searchTerm)
-            .then(response => this.handleResponse(response));
+        if (this.searchTerm !== '')
+            await this.apiService.getWhoIsResponse(this.searchTerm)
+                .then(response => this.handleResponse(response));
     }
 
     clearForm = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -26,7 +27,7 @@ export class IpWhoRequestForm extends React.Component {
 
         this.setState({ response: this.response });
     }
-    
+
     handleChange = (input: string) => {
         this.searchTerm = input;
     }
@@ -34,7 +35,7 @@ export class IpWhoRequestForm extends React.Component {
     render() {
         return (
             <div className="container mt-3">
-                <form onSubmit={this.submitForm}>
+                <form onSubmit={this.submitForm} className="needs-validation">
                     <div className="row w-50">
                         <h3>What is this?</h3>
                         <p className="lead">
@@ -45,17 +46,19 @@ export class IpWhoRequestForm extends React.Component {
 
                     <div className="row">
                         <div className="input-group mb-3 w-50">
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control has-validation"
                                 placeholder="IP Address or Domain"
-                                aria-label="Recipient's username" aria-describedby="button-search" 
+                                aria-label="Recipient's username" aria-describedby="button-search"
+                                onChange={event => this.handleChange(event.target.value)} required />
 
-                                
-                                onChange={event => this.handleChange(event.target.value)} />
+                            <div className="invalid-feedback">
+                                Please enter a domain or IP.
+                            </div>
 
                             <button className="btn btn-outline-primary" type="submit" id="button-serach">
                                 Search
                             </button>
-                            
+
                             <button className="btn btn-outline-secondary" type="button" onClick={this.clearForm}>
                                 Clear
                             </button>
