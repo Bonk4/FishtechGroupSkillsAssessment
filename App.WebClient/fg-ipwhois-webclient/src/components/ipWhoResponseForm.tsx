@@ -17,7 +17,7 @@ export class IpWhoResponseForm extends React.Component<Props> {
         
         if (this.props.apiResponse?.ErrorResponse?.isError) {
             return (
-                <div className="card">
+                <div className="card w-50">
                     <div className="card-body">
                         There was an error with the data submitted.
                     </div>
