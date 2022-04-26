@@ -1,5 +1,4 @@
-import { Address } from "../model/address";
-import { WhoIsResponse } from "../model/whoisResponse";
+import { WhoIsResponse } from "../model/ip2WhoIsApiResponse/whoisResponse";
 import { MockAddress } from "./mockAddress";
 import { MockDomainInfo } from "./mockDomainInfo";
 import { MockRegistrarInfo } from "./mockRegistrarInfo";

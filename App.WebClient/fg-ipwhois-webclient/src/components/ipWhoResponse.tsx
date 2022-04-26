@@ -1,11 +1,12 @@
 import React from "react";
-import { WhoIsResponse } from "../model/whoisResponse";
+import { WhoIsResponse } from "../model/ip2WhoIsApiResponse/whoisResponse";
 import { DomainInfoForm } from "./forms/domainInfoForm";
 import { RegistrarForm } from "./forms/registrarForm";
 import { AddressForm } from "./forms/addressForm";
+import { WhoIsApiResponse } from "../model/whoIsApiResponse/whoIsApiResponse";
 
 type Props = {
-    apiResponse: WhoIsResponse | undefined;
+    apiResponse: WhoIsApiResponse | undefined;
 };
 
 export class IpWhoResponse extends React.Component<Props> {
@@ -19,10 +20,10 @@ export class IpWhoResponse extends React.Component<Props> {
                     <div className="row">
                         <div className="col-8">
                             <h5>Domain Info</h5>
-                            <DomainInfoForm domainInfo={this.props.apiResponse.DomainInfo} />
+                            <DomainInfoForm domainInfo={undefined} />
 
                             <h5 className="mt-3">Registrar Info</h5>
-                            <RegistrarForm registrar={this.props.apiResponse.Registrar} />
+                            <RegistrarForm registrar={undefined} />
                         </div>
 
                         <div className="col-4">
@@ -43,16 +44,16 @@ export class IpWhoResponse extends React.Component<Props> {
                             </ul>
                             <div className="tab-content" id="pills-tabContent">
                                 <div className="tab-pane fade show active" id="pills-registrant" role="tabpanel" aria-labelledby="pills-registrant-tab">
-                                    <AddressForm address={this.props.apiResponse.RegistrantAddress} />
+                                    <AddressForm address={undefined} />
                                 </div>
                                 <div className="tab-pane fade" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab">
-                                    <AddressForm address={this.props.apiResponse.AdminAddress} />
+                                    <AddressForm address={undefined} />
                                 </div>
                                 <div className="tab-pane fade" id="pills-tech" role="tabpanel" aria-labelledby="pills-tech-tab">
-                                    <AddressForm address={this.props.apiResponse.TechAddress} />
+                                    <AddressForm address={undefined} />
                                 </div>
                                 <div className="tab-pane fade" id="pills-billing" role="tabpanel" aria-labelledby="pills-billing-tab">
-                                    <AddressForm address={this.props.apiResponse.BillingAddress} />
+                                    <AddressForm address={undefined} />
                                 </div>
                             </div>
                         </div>

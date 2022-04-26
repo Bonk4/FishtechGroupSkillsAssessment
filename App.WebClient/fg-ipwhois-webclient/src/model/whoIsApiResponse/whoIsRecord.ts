@@ -1,12 +1,13 @@
 import { Audit } from "./audit";
 import { Contact } from "./contact";
 import { NameServers } from "./nameServers";
-import { RegistryData } from "./registryData";
+import { RegistryData } from "./registry";
 
-export class WhoIsResponse {
+export class WhoIsRecord {
 	CreatedDate: string = '';
 	UpdatedDate: string = '';
 	ExpiresDate: string = '';
+
 	DomainName: string = '';
 	Status: string = '';
 	RawText: string = '';
@@ -16,7 +17,6 @@ export class WhoIsResponse {
 	Footer: string = '';
 	RegistrarName: string = '';
 	RegistrarIanaId: string = '';
-	DomainAvailability: string = '';
 	Contactemail: string = '';
 	DomainNameExt: string = '';
 	EstimatedDomainAge: number = 0;

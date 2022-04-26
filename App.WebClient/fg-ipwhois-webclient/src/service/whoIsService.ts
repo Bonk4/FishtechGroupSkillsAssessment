@@ -1,12 +1,11 @@
 import { MockIpWhoResponse } from "../mock/mockIpWhoResponse";
-import { Address } from "../model/address";
-import { RegistrarInfo } from "../model/registrarInfo";
-import { WhoIsResponse } from "../model/whoisResponse";
+import { Address } from "../model/ip2WhoIsApiResponse/address";
+import { WhoIsApiResponse } from "../model/whoIsApiResponse/whoIsApiResponse";
 
 export class WhoIsApiService {
-    private webApi: string = "http://localhost:7000/whois/mock";
+    private webApi: string = "http://20.124.53.93:7000/whois/mock";
 
-    async getWhoIsResponse(): Promise<WhoIsResponse> {
+    async getWhoIsResponse(): Promise<WhoIsApiResponse> {
         //todo: delete mock response
 
         // for testing without the api
@@ -18,7 +17,7 @@ export class WhoIsApiService {
 
         let response = await fetch(this.webApi, { headers: headers });
 
-        const data:WhoIsResponse = await response.json();
+        const data:WhoIsApiResponse = await response.json();
 
         return data;
     }

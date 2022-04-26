@@ -1,11 +1,11 @@
 import React, { FormEventHandler, MouseEventHandler } from "react";
-import { WhoIsResponse } from "../model/whoisResponse";
+import { WhoIsApiResponse } from "../model/whoIsApiResponse/whoIsApiResponse";
 import { WhoIsApiService } from "../service/whoIsService";
 import { IpWhoResponse } from "./ipWhoResponse";
 
 export class IpWhoRequestForm extends React.Component {
     apiService: WhoIsApiService = new WhoIsApiService();
-    response: WhoIsResponse | undefined = undefined;
+    response: WhoIsApiResponse | undefined = undefined;
 
     submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -18,7 +18,7 @@ export class IpWhoRequestForm extends React.Component {
         this.handleResponse(undefined);
     }
 
-    handleResponse(whoIsResponse: WhoIsResponse | undefined) {
+    handleResponse(whoIsResponse: WhoIsApiResponse | undefined) {
         console.log(whoIsResponse);
 
         this.response = whoIsResponse;

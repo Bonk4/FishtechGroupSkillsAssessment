@@ -6,7 +6,7 @@ import { WhoIsController } from "./controller/whoIsController";
 import { WhoIsResponse } from "./model/whoIsResponse";
 
 const app: Application = express();
-const port = 7000;
+const port = 7001;
 
 let mockController = new MockController();
 let whoIsController = new WhoIsController();
