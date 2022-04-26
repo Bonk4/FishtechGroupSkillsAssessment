@@ -35,8 +35,8 @@ export class IpWhoRequestForm extends React.Component {
     render() {
         return (
             <div className="container mt-3">
-                <form onSubmit={this.submitForm} className="needs-validation">
-                    <div className="row w-50">
+                <form onSubmit={this.submitForm} className="request-form needs-validation">
+                    <div className="row">
                         <h3>What is this?</h3>
                         <p className="lead">
                             This web app handles checking domain info on any site you search for.
@@ -45,7 +45,7 @@ export class IpWhoRequestForm extends React.Component {
                     </div>
 
                     <div className="row">
-                        <div className="input-group mb-3 w-50">
+                        <div className="input-group mb-3 request-form">
                             <input type="text" className="form-control has-validation"
                                 placeholder="IP Address or Domain"
                                 aria-label="Recipient's username" aria-describedby="button-search"

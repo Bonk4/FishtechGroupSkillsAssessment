@@ -17,7 +17,7 @@ export class IpWhoResponseForm extends React.Component<Props> {
         
         if (this.props.apiResponse?.ErrorResponse?.isError) {
             return (
-                <div className="card w-50">
+                <div className="card request-form">
                     <div className="card-body">
                         There was an error with the data submitted.
                     </div>
@@ -28,7 +28,7 @@ export class IpWhoResponseForm extends React.Component<Props> {
         return (
             <div className="container mt-3">
                 <div className="row">
-                    <div className="col-8">
+                    <div className="col-sm-8">
                         <h5>Domain Info</h5>
                         <DomainInfoForm WhoisRecord={this.props.apiResponse.WhoisRecord} />
 
@@ -36,7 +36,7 @@ export class IpWhoResponseForm extends React.Component<Props> {
                         <RegistrarForm WhoIsRecord={this.props.apiResponse.WhoisRecord} />
                     </div>
 
-                    <div className="col-4">
+                    <div className="col-sm-4">
                         <h5>Contacts</h5>
                         <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li className="nav-item w-25" role="presentation">

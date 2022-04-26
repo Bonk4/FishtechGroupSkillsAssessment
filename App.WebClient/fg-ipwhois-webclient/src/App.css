@@ -37,6 +37,10 @@
   }
 }
 
+.request-form {
+  max-width: 650px;
+}
+
 /* bootstrap overrides */
 
 input {
