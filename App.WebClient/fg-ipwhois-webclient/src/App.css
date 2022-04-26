@@ -42,3 +42,8 @@
 input {
   background: white !important;
 }
+
+textarea {
+  height: 100px !important;
+  background: white !important;
+}

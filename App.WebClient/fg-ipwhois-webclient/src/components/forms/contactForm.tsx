@@ -27,7 +27,7 @@ export class ContactForm extends React.Component<Props> {
                     <label htmlFor="contactCountryCode">Country Code</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input type="text" className="form-control" id="contactRawText" value={this.props.contact?.rawText} readOnly={true} />
+                    <textarea className="form-control" id="contactRawText" value={this.props.contact?.rawText} readOnly={true} />
                     <label htmlFor="contactRawText">RawText</label>
                 </div>
             </div>

@@ -27,12 +27,8 @@ export class RegistrarForm extends React.Component<Props> {
                     <label htmlFor="registrarStatus">Status</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input type="text" className="form-control" id="registrarHeader" value={this.props.WhoIsRecord?.registryData.header} readOnly={true} />
-                    <label htmlFor="registrarHeader">Header</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <input type="text" className="form-control" id="registrarFooter" value={this.props.WhoIsRecord?.registryData.footer} readOnly={true} />
-                    <label htmlFor="registrarFooter">Footer</label>
+                    <input type="text" className="form-control" id="registrarHeader" value={this.props.WhoIsRecord?.contactemail} readOnly={true} />
+                    <label htmlFor="contactEmail">Contact Email</label>
                 </div>
             </div>
         );

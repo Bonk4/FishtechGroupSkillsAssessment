@@ -3,6 +3,7 @@ import { DomainInfoForm } from "./forms/domainInfoForm";
 import { RegistrarForm } from "./forms/registrarForm";
 import { ContactForm } from "./forms/contactForm";
 import { WhoIsApiResponse } from "../model/whoIsApiResponse/whoIsApiResponse";
+import { NameServersForm } from "./forms/nameServersForm";
 
 type Props = {
     apiResponse: WhoIsApiResponse | undefined;
@@ -13,6 +14,16 @@ export class IpWhoResponseForm extends React.Component<Props> {
     render() {
         if (this.props.apiResponse === undefined)
             return (<div></div>);
+        
+        if (this.props.apiResponse?.ErrorResponse?.isError) {
+            return (
+                <div className="card">
+                    <div className="card-body">
+                        There was an error with the data submitted.
+                    </div>
+                </div>
+            );
+        }
 
         return (
             <div className="container mt-3">
@@ -55,6 +66,9 @@ export class IpWhoResponseForm extends React.Component<Props> {
                                     <ContactForm contact={this.props.apiResponse.WhoisRecord.Registrant} />
                                 </div> */}
                         </div>
+                        
+                        <h5>Name Servers</h5>
+                        <NameServersForm NameServers={this.props.apiResponse.WhoisRecord.nameServers} />
                     </div>
                 </div>
             </div>
