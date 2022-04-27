@@ -14,7 +14,6 @@ export class WhoIsController {
             headers: { 'Context-Type': 'application/json' }
         })).json().then(x => response = x);
         
-        console.log('test');
         return response.WhoisRecord as WhoIsResponse;
     }
 }
